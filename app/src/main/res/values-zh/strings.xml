@@ -1,0 +1,14 @@
+<resources>
+
+    <!--中文包-->
+    <string name="app_name">科技</string> <!--app标题-->
+    <string name="app_start_title">维度科技</string> <!--app闪屏页启动标题-->
+    <string name="app_start_title2">八维移动通信学院作品</string> <!--app闪屏页底部启动标题-->
+    <string name="txt_loginandregist_slidingmenu">登录/注册</string> <!--侧滑菜单栏登录注册-->
+
+    <!--底部导航文字-->
+    <string name="txt_information_homebtnbuttom">资讯</string>
+    <string name="txt_message_homebtnbuttom">消息</string>
+    <string name="txt_community_homebtnbuttom">社区</string>
+
+</resources>

@@ -1,0 +1,13 @@
+<resources>
+    <!--英文包-->
+    <string name="app_name">Tech</string> <!--app标题-->
+    <string name="app_start_title">Dimensions of science and technology</string> <!--app闪屏页启动标题-->
+    <string name="app_start_title2">Eight-dimensional mobile communication college works</string> <!--app闪屏页底部启动标题-->
+    <string name="txt_loginandregist_slidingmenu">Login/registration</string> <!--侧滑菜单栏登录注册-->
+
+    <!--底部导航文字-->
+    <string name="txt_information_homebtnbuttom">Information</string>
+    <string name="txt_message_homebtnbuttom">Message</string>
+    <string name="txt_community_homebtnbuttom">Community</string>
+
+</resources>

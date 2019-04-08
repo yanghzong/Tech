@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wd.tech.MainActivity"
+    android:background="@mipmap/yindao"
+    >
+
+    <ImageView
+        android:id="@+id/img_title_animation"
+        android:layout_width="@dimen/dp_110"
+        android:layout_height="@dimen/dp_110"
+        android:src="@mipmap/logo_hdpi"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_154"
+        />
+    //做动画时,整体文字动画
+    <LinearLayout
+        android:id="@+id/ll_title_animation"
+        android:orientation="vertical"
+        android:layout_above="@+id/start_title_buttom"
+        android:layout_marginBottom="@dimen/dp_46"
+        style="@style/Center_Display"
+        >
+
+        <TextView
+            android:textSize="@dimen/dp_35"
+            android:textColor="#ffffff"
+            android:text="@string/app_start_title"
+            style="@style/Center_Display"
+            />
+        <TextView
+            android:textSize="@dimen/dp_20"
+            android:textColor="#ffffff"
+            android:text="WEIDU KEJI"
+            android:layout_gravity="center"
+            style="@style/Center_Display"
+            />
+    </LinearLayout>
+
+     //无事件
+    <TextView
+        android:id="@+id/start_title_buttom"
+        android:textSize="@dimen/dp_20"
+        android:textColor="#cfcbcb"
+        android:text="@string/app_start_title2"
+        android:layout_marginBottom="@dimen/dp_20"
+        style="@style/Center_Display"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>
