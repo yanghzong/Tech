@@ -21,18 +21,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        <!--4.9 添加了横竖屏切换 configChanges 所有的Activity-->
+        <activity android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".page.HomeActivity" />
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity android:name=".page.loginandregistpage.LoginActivity"></activity>
+        <activity android:name=".page.HomeActivity"
+            android:configChanges="orientation|keyboardHidden"
+            />
+
+        <activity android:name=".page.loginandregistpage.LoginActivity"
+            android:configChanges="orientation|keyboardHidden"
+            ></activity>
     </application>
 
 </manifest>

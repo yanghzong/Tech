@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.squareup.leakcanary.LeakCanary;
 
 /**
  * Author : 张自力
@@ -23,17 +24,28 @@ public class MyApplication extends Application {
         super.onCreate();
         //1. 全局context设置
         setGlobalContext();
-        //2 初始化Fresco
+        //2 内存泄漏监听
+        initLeakCanary();
+        //3 初始化Fresco
         initFresco();
+
 
     }
 
     /**
-     * 2 初始化Fresco
+     * 3 初始化Fresco
      *
      * */
     private void initFresco() {
         Fresco.initialize(this);
+    }
+
+    /**
+     *2  内存泄漏监听o
+     *
+     * */
+    private void initLeakCanary() {
+        LeakCanary.install(this);
     }
 
     /**

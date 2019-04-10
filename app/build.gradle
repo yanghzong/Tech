@@ -39,9 +39,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     /**
      * 1.状态栏沉浸式设置
-     *
+     *    内存泄漏监听
      * */
     implementation 'com.jaeger.statusbarutil:library:1.4.0'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3'
+
     /**
      * 2.使用Retrofit+RxJava+日志拦截器需要用到的依赖:
      *

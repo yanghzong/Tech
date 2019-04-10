@@ -29,13 +29,13 @@
                 android:src="@mipmap/login_icon_phone_n_hdpi" />
 
             <EditText
-                android:id="@+id/userName"
+                android:id="@+id/userPhono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:background="@null"
                 android:cursorVisible="true"
-                android:hint="手机号"
+                android:hint="@string/userPhone"
                 android:textColor="#ffffff"
                 android:textColorHint="#ffffff"
                 android:textColorLink="#ffffff"
@@ -70,7 +70,7 @@
                 android:layout_toRightOf="@id/img_s"
                 android:background="@null"
                 android:cursorVisible="true"
-                android:hint="登录密码"
+                android:hint="@string/userPaw"
                 android:inputType="textPassword"
                 android:lines="1"
                 android:textColorHint="#ffffff" />
@@ -98,11 +98,11 @@
             >
 
             <TextView
-                android:id="@+id/btn_regist"
+                android:id="@+id/btn_fastregist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="快速注册"
+                android:text="@string/btn_fastregist"
                 android:textSize="14sp"
                 android:textColor="#ffffff"/>
         </RelativeLayout>
@@ -125,10 +125,9 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:background="@drawable/bg_btn_r"
-            android:text="登录"
+            android:text="@string/btn_login"
             android:textColor="#f9f5f5"
             android:textSize="18sp" />
-
 
 
         <RelativeLayout
@@ -152,7 +151,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="第三方账号快捷登录"
+                    android:text="@string/thirdpartylogin"
                     android:textSize="10sp"
                     android:textColor="#fff"/>
                 <TextView
