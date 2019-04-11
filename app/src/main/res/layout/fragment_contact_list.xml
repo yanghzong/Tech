@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4565"
-    tools:context=".page.messagepage.fragment.FragmentContactList">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+ <android.support.constraint.ConstraintLayout
+     android:layout_width="match_parent"
+     android:layout_height="103dp">
+     <EditText
+         android:id="@+id/edit_search_contactlist"
+         android:layout_width="336dp"
+         android:layout_height="32dp"
+         android:background="@drawable/corners_search"
+         app:layout_constraintLeft_toLeftOf="parent"
+         app:layout_constraintRight_toRightOf="parent"
+         android:drawablePadding="16dp"
+         android:hint="Search"
+         app:layout_constraintTop_toTopOf="parent"
+         android:layout_marginTop="10dp"
+         android:drawableLeft="@mipmap/common_nav_btn_search_n_hdpi"
+         />
+     <View
+         android:layout_width="match_parent"
+         android:layout_height="1dp"
+         android:background="#666666"
+         app:layout_constraintTop_toBottomOf="@id/edit_search_contactlist"
+         android:layout_marginTop="10dp"
+         ></View>
 
-</FrameLayout>
+
+ </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>
