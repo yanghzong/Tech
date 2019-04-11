@@ -6,9 +6,11 @@ import android.util.Log;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.wd.tech.application.MyApplication;
 import com.wd.tech.utils.networkutil.NetUtil;
+import com.wd.tech.utils.storageutil.SPUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -43,8 +45,8 @@ public class RxRetrofitUtils {
      * */
     private static volatile RxRetrofitUtils instance;
     private final Retrofit.Builder rbuilder;
-    /*private final int userId;
-    private final String sessionId;*/
+    private final int userId;
+    private final String sessionId;
 
     //缓存声明
     File httpCacheDirectory = new File("/sdcard", "cache_xx");
@@ -67,12 +69,12 @@ public class RxRetrofitUtils {
         httpLoggingInterceptor.setLevel(level);
 
         //通过SP得到存储的sessionid 和 userid
-        /*userId = (int) MyUtils.getData(MyApplication.applicationContext, "userId", 0);
-        sessionId = (String) MyUtils.getData(MyApplication.applicationContext, "sessionId", "");*/
+        userId = (int) SPUtil.getInt(MyApplication.applicationContext, "userId", 0);
+        sessionId = (String) SPUtil.getString(MyApplication.applicationContext, "sessionId", "");
 
-       /* Map<String,String> map = new HashMap<>();
+        Map<String,String> map = new HashMap<>();
         map.put("sessionId",sessionId);
-        map.put("userId",userId+"");*/
+        map.put("userId",userId+"");
       //.addInterceptor(new MyInterceptor(map))//添加
 
         //Okhttpclient对象的创建
