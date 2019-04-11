@@ -20,6 +20,9 @@
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
-    </string> <!--侧滑菜单栏登录注册-->
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string> <!--侧滑菜单栏登录注册-->
 
 </resources>
