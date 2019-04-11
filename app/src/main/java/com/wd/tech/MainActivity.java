@@ -17,7 +17,6 @@ import com.wd.tech.utils.storageutil.SPUtil;
  * */
 
 public class MainActivity extends BaseActivity {
-
     /**
      * 标识区
      *
