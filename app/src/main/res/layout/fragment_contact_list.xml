@@ -1,15 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4565"
-    tools:context=".page.messagepage.fragment.FragmentContactList">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    tools:context=".page.messagepage.activity.AddAllActivity"
+    android:background="#f2f2f2">
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraint_search"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="52dp"
+        android:background="#ffffff"
+        >
+        <EditText
+            android:id="@+id/edit_search_contactlist"
+            android:layout_width="336dp"
+            android:layout_height="32dp"
+            android:background="@drawable/corners_search"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:drawablePadding="16dp"
+            android:hint="Search"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@mipmap/common_nav_btn_search_n_hdpi"
+            />
 
-</FrameLayout>
+    </android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layout_contact_group"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/constraint_search"
+        android:layout_marginTop="1dp"
+        android:background="#ffffff"
+        >
+        <ImageView
+            android:id="@+id/Image_contact_group"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/nav_btn_setting_n_hdpi"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="12dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@+id/Image_contact_group"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="群组"
+            android:textColor="#333333"
+            android:textSize="14sp"
+            android:layout_marginLeft="10dp"
+            />
+    </android.support.constraint.ConstraintLayout>
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/layout_contact_group"
+        ></ExpandableListView>
+
+</android.support.constraint.ConstraintLayout>
