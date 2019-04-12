@@ -62,7 +62,7 @@ public abstract class BaseFragment extends Fragment {
      *    比如实现网络操作等
      *    非必须
      * */
-    private void setMoreAction() {
+    protected void setMoreAction() {
 
     }
 
@@ -71,7 +71,7 @@ public abstract class BaseFragment extends Fragment {
      *   比如点击事件等等
      *   非必须
      * */
-    private void setListener() {
+    protected void setListener() {
 
     }
 
@@ -80,7 +80,7 @@ public abstract class BaseFragment extends Fragment {
      *
      *   非必须实现的 方法
      * */
-    private void initData() {
+    protected void initData() {
 
     }
 }

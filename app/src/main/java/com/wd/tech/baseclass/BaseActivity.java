@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import com.jaeger.library.StatusBarUtil;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Author : 张自力
  * Created on time.
@@ -54,6 +57,20 @@ public abstract class BaseActivity extends AppCompatActivity{
         //7 其他操作
         setMoreAction();
     }
+
+    /**
+     * 7.其他操作
+     *    比如实现网络操作等
+     *    非必须
+     * */
+    public Map getMap(String nickName,String phone,String pwd) {
+        Map<String,String> map = new HashMap<>();
+        map.put("nickName",nickName);
+        map.put("phone",phone);
+        map.put("pwd",pwd);
+        return map;
+    }
+
 
     /**
      * 11. Intent跳转 传值
@@ -167,7 +184,7 @@ public abstract class BaseActivity extends AppCompatActivity{
         //取得ActionBar对象
         ActionBar actionBar =getSupportActionBar();
         //调用hide方法，隐藏actionbar
-        actionBar.hide();
+        //actionBar.hide();  //注: 白天和页模式切换冲突,注释掉即可
 
         //透明设置
         if (Build.VERSION.SDK_INT >= 21) {
@@ -180,7 +197,7 @@ public abstract class BaseActivity extends AppCompatActivity{
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
         actionBar = getSupportActionBar();
-        actionBar.hide();
+        //actionBar.hide();
         //状态栏设置
         onWindowFocusChanged(true);
     }
