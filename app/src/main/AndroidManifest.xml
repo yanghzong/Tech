@@ -35,7 +35,7 @@
         <activity android:name=".page.loginandregistpage.LoginActivity">
 
         </activity>
-
+        <activity android:name=".page.messagepage.activity.AddAllActivity"/>
     </application>
 
 </manifest>
