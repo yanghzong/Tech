@@ -27,7 +27,7 @@ android {
         }
     }
     //版本冲突的解决
-   /* configurations.all {
+    configurations.all {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
             def requested = details.requested
             if (requested.group == 'com.android.support') {
@@ -36,7 +36,7 @@ android {
                 }
             }
         }
-    }*/
+    }
     productFlavors {
     }
 }
