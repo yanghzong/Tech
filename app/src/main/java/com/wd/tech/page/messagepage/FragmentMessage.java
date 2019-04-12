@@ -1,14 +1,20 @@
 package com.wd.tech.page.messagepage;
 
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.graphics.Color;
 import android.nfc.cardemulation.CardEmulation;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.PopupWindowCompat;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -16,6 +22,8 @@ import com.wd.tech.R;
 import com.wd.tech.baseclass.BaseFragment;
 import com.wd.tech.page.messagepage.fragment.FragmentContactList;
 import com.wd.tech.page.messagepage.fragment.FragmentMessageList;
+import com.wd.tech.page.messagepage.widget.AddAllPopupWindow;
+import com.wd.tech.utils.storageutil.DpToPxUtil;
 
 /**
  * Author : 张自力
@@ -32,8 +40,9 @@ public class FragmentMessage extends BaseFragment implements View.OnClickListene
     private TextView textMessageFragmentmessage;
     private TextView textContactsFragmentmessage;
     private TextView textSelectedStateStyle;
-
-
+    private ImageView imgAddAllFragmentmessage;
+    private ConstraintLayout conTitleLayout;
+    boolean flagRight = true,flagLeft = true;
     /**
      * 4.初始化控件
      * <p>
@@ -44,18 +53,10 @@ public class FragmentMessage extends BaseFragment implements View.OnClickListene
         //每个fragment对象的实例
         fragmentMessageList = new FragmentMessageList();
         fragmentContactList = new FragmentContactList();
-        textMessageFragmentmessage = view.findViewById(R.id.text_message_fragmentmessage);
-        textContactsFragmentmessage = view.findViewById(R.id.text_contacts_fragmentmessage);
-        textSelectedStateStyle = view.findViewById(R.id.text_selected_state_style);
+        initControl(view);
+
         //默认展示消息fragment
         defaultShowFragment();
-        setSelectedStyle();
-        textContactsFragmentmessage.setTextColor(Color.parseColor("#333333"));
-        //点击监听
-        textMessageFragmentmessage.setOnClickListener(this);
-        textContactsFragmentmessage.setOnClickListener(this);
-
-
 
     }
 
@@ -68,26 +69,49 @@ public class FragmentMessage extends BaseFragment implements View.OnClickListene
      */
     @Override
     protected int getContentViewID() {
-
         return R.layout.fragmentmessage;
-
     }
 
     @Override
     public void onClick(View view) {
+
         // 获取FragmentTransaction对象
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         switch (view.getId()) {
             case R.id.text_message_fragmentmessage:
+                flagRight = true;
                 transaction.hide(fragmentContactList).show(fragmentMessageList).commit();
                 titleSlideAnimationLeft();
                 break;
             case R.id.text_contacts_fragmentmessage:
+                flagLeft = true;
                 transaction.hide(fragmentMessageList).show(fragmentContactList).commit();
                 titleSlideAnimationRight();
                 break;
+            case R.id.img_add_all_fragmentmessage:
+                //点击弹出popupwind
+                showPopup();
+                break;
+
         }
+    }
+
+
+    //初始化控件及监听
+    private void initControl(View view) {
+        textMessageFragmentmessage = view.findViewById(R.id.text_message_fragmentmessage);
+        textContactsFragmentmessage = view.findViewById(R.id.text_contacts_fragmentmessage);
+        textSelectedStateStyle = view.findViewById(R.id.text_selected_state_style);
+        imgAddAllFragmentmessage = view.findViewById(R.id.img_add_all_fragmentmessage);
+        conTitleLayout = view.findViewById(R.id.con_title_layout);
+
+        //点击监听
+        textMessageFragmentmessage.setOnClickListener(this);
+        textContactsFragmentmessage.setOnClickListener(this);
+        imgAddAllFragmentmessage.setOnClickListener(this);
+
+
     }
 
     //默认展示消息fragment的方法
@@ -99,6 +123,8 @@ public class FragmentMessage extends BaseFragment implements View.OnClickListene
         transaction.add(R.id.frame_layout_fragmentmessage, fragmentMessageList);
         transaction.add(R.id.frame_layout_fragmentmessage, fragmentContactList);
         transaction.show(fragmentMessageList).hide(fragmentContactList).commit();
+        textMessageFragmentmessage.setTextColor(Color.parseColor("#ffffff"));
+        textContactsFragmentmessage.setTextColor(Color.parseColor("#333333"));
     }
 
     //被选中的title的样式
@@ -118,13 +144,33 @@ public class FragmentMessage extends BaseFragment implements View.OnClickListene
 
     //被选中的title的样式  -> 向右平移
     private void titleSlideAnimationRight(){
-        ObjectAnimator.ofFloat(textSelectedStateStyle, "translationX", 0, 141).setDuration(250).start();
-        setSelectedStyle();
+        if (flagRight){
+            int moveDistance = DpToPxUtil.dip2px(getContext(), 94);
+            ObjectAnimator.ofFloat(textSelectedStateStyle, "translationX", 0, moveDistance).setDuration(250).start();
+            setSelectedStyle();
+            flagRight = false;
+        }else{
+            //no thing to do
+
+        }
     }
 
     //被选中的title的样式  -> 向右平移
     private void titleSlideAnimationLeft(){
-        ObjectAnimator.ofFloat(textSelectedStateStyle, "translationX", 141, 0).setDuration(250).start();
-        setSelectedStyle();
+        if (flagLeft){
+            int moveDistance = DpToPxUtil.dip2px(getContext(), 94);
+            ObjectAnimator.ofFloat(textSelectedStateStyle, "translationX", moveDistance, 0).setDuration(250).start();
+            setSelectedStyle();
+            flagLeft = false;
+        }else{
+            //no thing to do
+        }
+
+    }
+
+    //点击弹出popupwind
+    private void showPopup() {
+        AddAllPopupWindow addAllPopupWindow = new AddAllPopupWindow(getContext());
+        PopupWindowCompat.showAsDropDown(addAllPopupWindow, conTitleLayout, 0, -8, Gravity.END);
     }
 }

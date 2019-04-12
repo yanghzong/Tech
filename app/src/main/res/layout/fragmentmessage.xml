@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/con_title_layout"
         app:layout_constraintTop_toTopOf="parent"
         android:background="#f2f2f2"
         android:layout_width="match_parent"
@@ -48,6 +49,7 @@
                 />
         </RelativeLayout>
         <ImageView
+            android:id="@+id/img_add_all_fragmentmessage"
             android:layout_width="24dp"
             android:layout_height="24dp"
             app:layout_constraintRight_toRightOf="parent"

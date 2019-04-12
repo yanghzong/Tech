@@ -32,7 +32,8 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".page.loginandregistpage.LoginActivity"></activity>
+        <activity android:name=".page.loginandregistpage.LoginActivity" />
+        <activity android:name=".page.messagepage.activity.AddAllActivity"></activity>
     </application>
 
 </manifest>

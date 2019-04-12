@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="130dp"
+    android:layout_height="85dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="95dp"
+        android:src="@drawable/triangle_up" />
+
+    <LinearLayout
+        android:background="#666666"
+        android:orientation="vertical"
+        android:layout_width="130dp"
+        android:layout_height="68dp">
+
+        <LinearLayout
+            android:id="@+id/linear_layout_friend_popup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:background="@mipmap/nav_icon_add_friend_n_hdpi" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="加好友或群"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linear_layout_group_popup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:background="@mipmap/nav_icon_add_group_n_hdpi" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="创建群聊"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
