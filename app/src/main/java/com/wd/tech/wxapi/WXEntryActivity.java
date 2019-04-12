@@ -88,7 +88,7 @@ public class WXEntryActivity extends BaseActivity implements IWXAPIEventHandler,
                     //登录成功,跳转到首页界面
                     startAvtivity(HomeActivity.class);
                     finish();
-                    overridePendingTransition(R.anim.start_fullscreen, R.anim.quit_fullscreen);
+                    //overridePendingTransition(R.anim.start_fullscreen, R.anim.quit_fullscreen);
                 }
             }
 

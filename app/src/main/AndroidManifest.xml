@@ -55,6 +55,8 @@
             android:name=".page.loginandregistpage.LoginActivity"
             android:configChanges="orientation|keyboardHidden" />
         <activity android:name=".page.loginandregistpage.RegisterActivity"></activity>
+
+        <activity android:name=".page.messagepage.activity.AddAllActivity"/>
     </application>
 
 </manifest>
