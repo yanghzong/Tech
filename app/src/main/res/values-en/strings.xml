@@ -11,6 +11,10 @@
     <string name="userPaw">Password</string>
     <string name="btn_fastregist">Celerity Register</string>
     <string name="thirdpartylogin">Third Party ID Celerity Login</string>
+    <!--注册界面-->
+    <string name="btn_noteverifyfastregist">Note Verify Fast Regist</string>
+    <string name="btn_register">Register</string>
+    <string name="btn_nickname">Nick Name</string>
 
     <!--底部导航文字-->
     <string name="txt_information_homebtnbuttom">Information</string>

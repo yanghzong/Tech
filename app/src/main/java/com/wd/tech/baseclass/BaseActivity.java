@@ -58,16 +58,42 @@ public abstract class BaseActivity extends AppCompatActivity{
         setMoreAction();
     }
 
+
     /**
-     * 7.其他操作
-     *    比如实现网络操作等
+     * 13.Map封装  两个参数
+     *    @param key1  键1
+     *    @param key2  键2
+     *
+     *    @param value1 值1
+     *    @param value2 值2
+     *
      *    非必须
      * */
-    public Map getMap(String nickName,String phone,String pwd) {
+    public Map getMap(String key1, String value1,String key2, String value2) {
         Map<String,String> map = new HashMap<>();
-        map.put("nickName",nickName);
-        map.put("phone",phone);
-        map.put("pwd",pwd);
+        map.put(key1,value1);
+        map.put(key2,value2);
+        return map;
+    }
+
+
+    /**
+     * 12. Map封装  三个参数
+     *    @param key1  键1
+     *    @param key2  键2
+     *    @param key3  键3
+     *
+     *    @param value1 值1
+     *    @param value2 值2
+     *    @param value3 值3
+     *
+     *    非必须
+     * */
+    public Map getMap(String key1, String value1,String key2, String value2,String key3, String value3) {
+        Map<String,String> map = new HashMap<>();
+        map.put(key1,value1);
+        map.put(key2,value2);
+        map.put(key3,value3);
         return map;
     }
 

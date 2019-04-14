@@ -18,6 +18,7 @@ import com.wd.tech.utils.encryptionverificationutil.RegularVerification;
 import com.wd.tech.utils.encryptionverificationutil.RsaCoder;
 
 import java.lang.reflect.Type;
+import java.security.PublicKey;
 import java.util.Map;
 
 /**
@@ -46,11 +47,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
      * */
     @Override
     public void initViews() {
-        //初始化对象
+        //初始化Presenter对象
         presenter = new Presenter();
         presenter.attach(this);
 
-
+        //初始化控件
         edRegisterNikename = findViewById(R.id.ed_register_nikename);//用户名
         edRegisterNiPhone = findViewById(R.id.ed_register_phone);//手机号
         edRegisterNiPwd = findViewById(R.id.ed_register_pwd);//密码
@@ -94,7 +95,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         //3 进行密码加密
                         String signPwd = RsaCoder.encryptByPublicKey(registerNikePwd);
                         //4 进行 map封装
-                        Map map = getMap(registerNikeName, registerPhone, signPwd);
+                        Map map = getMap("phone", registerPhone,"nickName",registerNikeName,"pwd",signPwd);
                         //5 调用Presenter进行请求
                         presenter.doPostMapP(API.APIUserRegisterUrl,map,typeUserRegister);
                     }
