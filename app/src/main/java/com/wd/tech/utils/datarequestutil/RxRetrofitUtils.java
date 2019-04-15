@@ -108,7 +108,7 @@ public class RxRetrofitUtils {
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)
                 .sslSocketFactory(sslSocketFactory,trustAllCert)
-                .addInterceptor(new MyInterceptor(map))//拦截器添加请求头
+                //.addInterceptor(new MyInterceptor(map))//拦截器添加请求头
                 .addInterceptor(httpLoggingInterceptor)//添加日志拦截器
                 .addNetworkInterceptor(new Interceptor() {//添加缓存
                     @Override

@@ -32,8 +32,7 @@
         <!-- 4.9 添加了横竖屏切换 configChanges 所有的Activity -->
 
         <!--微信第三方登录-->
-        //清单注册
-        //第三方微信登录
+
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

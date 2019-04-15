@@ -5,7 +5,7 @@ android {
         release {
             keyAlias 'tech'
             keyPassword '123456'
-            storeFile file('G:/AndroidStudioWorkSpace_TestDemo/Tech/app/assets/tech.keystore')
+            storeFile file('D:/Tech/app/assets/tech.keystore')
             storePassword '123456'
         }
     }

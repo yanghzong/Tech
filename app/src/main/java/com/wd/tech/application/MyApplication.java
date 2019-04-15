@@ -6,7 +6,6 @@ import android.content.res.Configuration;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.squareup.leakcanary.LeakCanary;
 import com.wd.tech.utils.storageutil.SPUtil;
 
 /**
@@ -28,7 +27,7 @@ public class MyApplication extends Application {
         //1. 全局context设置
         setGlobalContext();
         //2 内存泄漏监听
-        initLeakCanary();
+       // initLeakCanary();
         //3 初始化Fresco
         initFresco();
         //4 白天夜间模式切换
@@ -63,9 +62,9 @@ public class MyApplication extends Application {
      *2  内存泄漏监听o
      *
      * */
-    private void initLeakCanary() {
+  /*  private void initLeakCanary() {
         LeakCanary.install(this);
-    }
+    }*/
 
     /**
      * 1. 全局context设置
