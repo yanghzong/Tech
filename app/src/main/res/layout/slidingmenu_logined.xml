@@ -279,5 +279,34 @@
                 android:src="@mipmap/my_icon_next_n_hdpi"/>
 
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_setting2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/my_icon_setting_n_hdpi" />
+
+            <TextView
+                android:layout_toRightOf="@id/img_setting2"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="白天/夜间模式切换" />
+            <Button
+                android:id="@+id/btn_dayandnight"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:text="切换"
+                android:src="@mipmap/my_icon_next_n_hdpi"/>
+
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

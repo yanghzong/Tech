@@ -12,10 +12,10 @@ public interface IView <T>{
 
     /**
      * 成功的回调方法
-     * @param T 成功数据
+     * @param o 成功数据
      *
      * */
-    void onSuccessIV(T T);
+    void onSuccessIV(T o);
 
     /**
      * 成功的回调方法

@@ -1,20 +1,42 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.wd.tech"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    //第三方微信登录配置
+    signingConfigs {
+        release {
+            keyPassword '123456'
+            storeFile file('D:/Tech/app/assets/tech.keystore')
+            storePassword '123456'
+            keyAlias 'tech'
+        }
+        /*debug{
+            keyAlias 'tech'
+            keyPassword '123456'
+            storeFile file('G:/AndroidStudioWorkSpace_TestDemo/Tech/app/assets/tech.keystore')
+            storePassword '123456'
+        }*/
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
+        /*debug {
+            signingConfig signingConfigs.debug
+        }*/
     }
 
     //版本冲突的解决
@@ -23,26 +45,35 @@ android {
             def requested = details.requested
             if (requested.group == 'com.android.support') {
                 if (!requested.name.startsWith("multidex")) {
-                    details.useVersion '27.1.1'
+                    details.useVersion '28.0.0'
                 }
             }
         }
+    }
+    productFlavors {
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:support-v4:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     /**
      * 1.状态栏沉浸式设置
-     *
+     *    内存泄漏监听
+     *    头条适配
+     *    微信第三方登录
      * */
     implementation 'com.jaeger.statusbarutil:library:1.4.0'
+    releaseApi 'com.squareup.leakcanary:leakcanary-android:1.3'
+    releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.3'
+    /*implementation 'me.jessyan:autosize:1.0.1' //头条适配*/
+    //微信第三方登录 依赖添加
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
     /**
      * 2.使用Retrofit+RxJava+日志拦截器需要用到的依赖:
      *

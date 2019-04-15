@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import com.jaeger.library.StatusBarUtil;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Author : 张自力
  * Created on time.
@@ -54,6 +57,46 @@ public abstract class BaseActivity extends AppCompatActivity{
         //7 其他操作
         setMoreAction();
     }
+
+
+    /**
+     * 13.Map封装  两个参数
+     *    @param key1  键1
+     *    @param key2  键2
+     *
+     *    @param value1 值1
+     *    @param value2 值2
+     *
+     *    非必须
+     * */
+    public Map getMap(String key1, String value1,String key2, String value2) {
+        Map<String,String> map = new HashMap<>();
+        map.put(key1,value1);
+        map.put(key2,value2);
+        return map;
+    }
+
+
+    /**
+     * 12. Map封装  三个参数
+     *    @param key1  键1
+     *    @param key2  键2
+     *    @param key3  键3
+     *
+     *    @param value1 值1
+     *    @param value2 值2
+     *    @param value3 值3
+     *
+     *    非必须
+     * */
+    public Map getMap(String key1, String value1,String key2, String value2,String key3, String value3) {
+        Map<String,String> map = new HashMap<>();
+        map.put(key1,value1);
+        map.put(key2,value2);
+        map.put(key3,value3);
+        return map;
+    }
+
 
     /**
      * 11. Intent跳转 传值
@@ -167,7 +210,7 @@ public abstract class BaseActivity extends AppCompatActivity{
         //取得ActionBar对象
         ActionBar actionBar =getSupportActionBar();
         //调用hide方法，隐藏actionbar
-        actionBar.hide();
+        //actionBar.hide();  //注: 白天和页模式切换冲突,注释掉即可
 
         //透明设置
         if (Build.VERSION.SDK_INT >= 21) {
@@ -180,7 +223,7 @@ public abstract class BaseActivity extends AppCompatActivity{
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
         actionBar = getSupportActionBar();
-        actionBar.hide();
+        //actionBar.hide();
         //状态栏设置
         onWindowFocusChanged(true);
     }
