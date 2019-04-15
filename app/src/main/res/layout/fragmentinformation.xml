@@ -1,21 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:background="#ffffff"
+    android:orientation="vertical">
 
-    //1 资讯页
-    <TextView
+
+    <!--标题-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/newsadvisory_sort"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_22"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/home_nav_btn_menu_n_hdpi"
+            />
+
+        <TextView
+            android:id="@+id/info_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/dp_10"
+            android:text="资讯"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_20" />
+
+        <ImageView
+            android:id="@+id/newadvisory_search"
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_22"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_12"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/common_nav_btn_search_n_hdpi" />
+
+    </RelativeLayout>
+
+    <!--整体滚动的部分-->
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/info_srl_load"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="@dimen/dp_30"
-        android:textColor="#F00"
-        android:text="杨忠"
-        android:layout_gravity="center"
-        android:gravity="center"
-        />
+        app:srlAccentColor="#00000000"
+        app:srlPrimaryColor="#00000000">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+          <com.stx.xhb.xbanner.XBanner
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/dp_300"
+              android:id="@+id/xbanner_advisory"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/info_rv_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 
 </LinearLayout>

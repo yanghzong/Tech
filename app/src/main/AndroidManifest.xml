@@ -21,24 +21,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-      <!-- &lt;!&ndash; 头条适配&ndash;&gt;
+
+        <!--
+        &lt;!&ndash; 头条适配&ndash;&gt;
         <meta-data
             android:name="design_width_in_dp"
             android:value="360"/>
         <meta-data
             android:name="design_height_in_dp"
-            android:value="640"/>-->
+            android:value="640"/>
+        -->
+
 
         <!-- 4.9 添加了横竖屏切换 configChanges 所有的Activity -->
 
-        <!--微信第三方登录-->
+
+        <!-- 微信第三方登录 -->
         //清单注册
         //第三方微信登录
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden">
@@ -54,9 +58,9 @@
         <activity
             android:name=".page.loginandregistpage.LoginActivity"
             android:configChanges="orientation|keyboardHidden" />
-        <activity android:name=".page.loginandregistpage.RegisterActivity"></activity>
-
-        <activity android:name=".page.messagepage.activity.AddAllActivity"/>
+        <activity android:name=".page.loginandregistpage.RegisterActivity" />
+        <activity android:name=".page.messagepage.activity.AddAllActivity" />
+        <activity android:name=".page.informationpage.activity.ClassfiyActivity"></activity>
     </application>
 
 </manifest>

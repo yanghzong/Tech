@@ -23,5 +23,7 @@ public class API {
     public static final String APIUserLoginUrl="techApi/user/v1/login";
     //微信登录
     public static final String APIWXLoginUrl="techApi/user/v1/weChatLogin";
+    //4.咨询页面轮播图
+    public static final String  NewsAdvisoryBannerUrl= "techApi/information/v1/bannerShow";
 
 }
