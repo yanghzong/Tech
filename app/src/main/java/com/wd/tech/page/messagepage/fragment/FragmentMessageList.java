@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 
 import com.wd.tech.R;
 import com.wd.tech.baseclass.BaseFragment;
@@ -14,6 +15,8 @@ import com.wd.tech.baseclass.BaseFragment;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentMessageList extends BaseFragment {
+
+
 
 
     @Override
