@@ -24,4 +24,7 @@ public class API {
     //微信登录
     public static final String APIWXLoginUrl="techApi/user/v1/weChatLogin";
 
+    //根据手机号查询用户信息
+    public static final String FindUserByPhoneUrl="techApi/user/verify/v1/findUserByPhone";
+
 }

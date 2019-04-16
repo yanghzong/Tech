@@ -1,5 +1,6 @@
 package com.wd.tech.page.loginandregistpage;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -13,12 +14,14 @@ import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.wd.tech.R;
 import com.wd.tech.baseclass.BaseActivity;
 import com.wd.tech.iview.IView;
+import com.wd.tech.page.HomeActivity;
 import com.wd.tech.page.loginandregistpage.bean.UserLoginBean;
 import com.wd.tech.page.loginandregistpage.bean.UserRegisterBean;
 import com.wd.tech.presenter.Presenter;
 import com.wd.tech.utils.datarequestutil.API;
 import com.wd.tech.utils.encryptionverificationutil.RegularVerification;
 import com.wd.tech.utils.encryptionverificationutil.RsaCoder;
+import com.wd.tech.utils.storageutil.SPUtil;
 import com.wd.tech.wxapi.WXLoginUtils;
 
 import java.lang.reflect.Type;
@@ -36,6 +39,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private EditText userPhone;
     private EditText userPaw;
     private Presenter presenter;
+    private SPUtil spUtil;
 
     /**
      * 5.初始化数据
@@ -47,7 +51,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         //初始化Presenter
         presenter = new Presenter();
         presenter.attach(this);
-
+        //SP存储userid sessionid
+        spUtil = new SPUtil();
         //初始化控件
         userPhone = findViewById(R.id.userPhono);
         userPaw = findViewById(R.id.userPaw);
@@ -141,6 +146,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 String message = userLoginBean.getMessage();
                 Log.i("登录打印", "onSuccessIV: "+status+"=========="+message);
                 showShortToast(message);
+                // 拿到 身份验证
+                spUtil.putInt(this,"userId",userLoginBean.getResult().getUserId());
+                spUtil.putString(this,"sessionId",userLoginBean.getResult().getSessionId()+"");
+                startAvtivity(HomeActivity.class);
             }
         }
     }

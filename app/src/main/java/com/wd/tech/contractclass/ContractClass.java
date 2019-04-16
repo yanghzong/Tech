@@ -59,6 +59,14 @@ public interface ContractClass {
          * */
         void doPostMapM(String url, Map<String, String> map, ICallBack iCallBack, Type type);
 
+        /**
+         * 5.post 以map方式进行提交
+         *
+         * @param map<String,String>  map集合
+         * @param url 为 除了网络环境外的后半段地址
+         * */
+        void doGetNetSomeThingM(String url, Map<String, String> map,String userId,String sessionId, ICallBack iCallBack, Type type);
+
     }
 
 
@@ -102,6 +110,14 @@ public interface ContractClass {
          * @param url 为 除了网络环境外的后半段地址
          * */
         void doPostMapP(String url, Map<String, String> map, Type type);
+
+        /**
+         * 4.post 以map方式进行提交
+         *
+         * @param map<String,String>  map集合
+         * @param url 为 除了网络环境外的后半段地址
+         * */
+        void doGetNetSomeThingP(String url, Map<String, String> map, String userId,String sessionId, Type type);
 
     }
 

@@ -75,12 +75,12 @@ public class RxRetrofitUtils {
         httpLoggingInterceptor.setLevel(level);
 
         //通过SP得到存储的sessionid 和 userid
-        int userId = (int) SPUtil.getInt(MyApplication.applicationContext, "userId", 0);
+        /*int userId = (int) SPUtil.getInt(MyApplication.applicationContext, "userId", 0);
         String sessionId = (String) SPUtil.getString(MyApplication.applicationContext, "sessionId", "");
 
          Map<String,String> map = new HashMap<>();
         map.put("sessionId",sessionId);
-        map.put("userId",userId+"");
+        map.put("userId",userId+"");*/
 
         //使用https
         try {
@@ -251,6 +251,17 @@ public class RxRetrofitUtils {
         return instance;
     }
 
+    public RxRetrofitUtils doGetMapSomeThing(String url,Map<String,String> map,String userId, String sessionId, RxRetrofitListener rxRetrofitListener){
+        //通过方法  得到RetrofitIView对象
+        RetrofitIView retrofitIView = getRetrofitIViewMethod();
+        //通过对象调用方法
+        retrofitIView.getSomeThingMap(url,map,userId,sessionId)
+                .throttleFirst(10,TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(getObserverMethod(rxRetrofitListener));
+        return instance;
+    }
 
 
     /**

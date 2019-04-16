@@ -3,19 +3,33 @@ package com.wd.tech.page.messagepage.activity;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.gson.reflect.TypeToken;
 import com.wd.tech.R;
 import com.wd.tech.baseclass.BaseActivity;
 import com.wd.tech.iview.IView;
+import com.wd.tech.page.loginandregistpage.bean.UserLoginBean;
+import com.wd.tech.page.messagepage.bean.FindMegAllBean;
+import com.wd.tech.presenter.Presenter;
+import com.wd.tech.utils.datarequestutil.API;
+import com.wd.tech.utils.networkutil.NetUtil;
 import com.wd.tech.utils.storageutil.DpToPxUtil;
+import com.wd.tech.utils.storageutil.SPUtil;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddAllActivity<T> extends BaseActivity implements View.OnClickListener,IView<T>{
 
@@ -25,8 +39,18 @@ public class AddAllActivity<T> extends BaseActivity implements View.OnClickListe
     boolean flagRight = true,flagLeft = true;
     private EditText editSearchActivityAddAll;
     private ImageView imgSearchActivityAddAll;
+    private ImageView imgPeopleHomepage;
     private ImageView imgFinshActivityAddAll;
-    private RecyclerView recySearchList;
+    private SimpleDraweeView sdvFindPeople;
+    private TextView textFindPeople;
+    private ConstraintLayout conFindPeopleMsg;
+
+    private boolean findType = true;
+    private Map<String, String> map;
+    private Presenter presenter;
+    private int userId;
+    private String sessionId;
+
 
     @Override
     public void initViews() {
@@ -39,6 +63,16 @@ public class AddAllActivity<T> extends BaseActivity implements View.OnClickListe
 
         //控件及点击监听
         initControl();
+        //初始化p层
+        presenter = new Presenter();
+        presenter.attach(this);
+        //获取userid sessionid
+        SPUtil spUtil = new SPUtil();
+        userId = spUtil.getInt(this, "userId", 0);
+        sessionId = spUtil.getString(this, "sessionId", "");
+        Log.e("三十岁",userId+"     "+sessionId);
+        //设置一个Map 传参用
+        map = new HashMap<>();
 
     }
 
@@ -50,7 +84,11 @@ public class AddAllActivity<T> extends BaseActivity implements View.OnClickListe
         imgSearchActivityAddAll = findViewById(R.id.img_search_activity_add_all);
         imgFinshActivityAddAll = findViewById(R.id.img_finsh_activity_add_all);
         editSearchActivityAddAll = findViewById(R.id.edit_search_activity_add_all);
-        recySearchList = findViewById(R.id.recy_search_list);
+        sdvFindPeople = findViewById(R.id.sdv_find_people);
+        textFindPeople = findViewById(R.id.text_find_people);
+        imgPeopleHomepage = findViewById(R.id.img_people_homepage);
+        conFindPeopleMsg = findViewById(R.id.con_find_people_msg);
+
 
         textFindFriendAddAll.setOnClickListener(this);
         textFindGroupAddAll.setOnClickListener(this);
@@ -80,7 +118,19 @@ public class AddAllActivity<T> extends BaseActivity implements View.OnClickListe
                 break;
             //搜索
             case R.id.img_search_activity_add_all:
-
+                //2 用户注册泛型
+                Type typeFindMegAllBean = new TypeToken<FindMegAllBean>() {
+                }.getType();
+                String searchMsgStr = editSearchActivityAddAll.getText().toString().trim();
+                if (findType){
+                    //判断是否有网络链接
+                    if (NetUtil.checkNet(this)){
+                        map.put("phone",searchMsgStr);
+                        presenter.doGetNetSomeThingP(API.FindUserByPhoneUrl,map,userId+"",sessionId,typeFindMegAllBean);
+                    }else{
+                        showShortToast("没网啦 亲 请检查网络");
+                    }
+                }
                 break;
             //返回上一层
             case R.id.img_finsh_activity_add_all:
@@ -116,7 +166,14 @@ public class AddAllActivity<T> extends BaseActivity implements View.OnClickListe
 
     @Override
     public void onSuccessIV(T T) {
-
+        if (T instanceof FindMegAllBean){
+            FindMegAllBean findMegAllBean = (FindMegAllBean) T;
+            if (findMegAllBean!=null){
+                sdvFindPeople.setImageURI(findMegAllBean.getResult().getHeadPic());
+                textFindPeople.setText(findMegAllBean.getResult().getNickName());
+                conFindPeopleMsg.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     @Override
@@ -127,7 +184,5 @@ public class AddAllActivity<T> extends BaseActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        recySearchList = null;
-
     }
 }

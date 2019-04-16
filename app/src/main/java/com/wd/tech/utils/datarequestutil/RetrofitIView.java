@@ -11,9 +11,11 @@ import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 
 
@@ -66,5 +68,17 @@ public interface RetrofitIView {
     @FormUrlEncoded
     @POST
     Observable<ResponseBody> getPostMapBody(@FieldMap Map<String,String> map, @Url String url);
+
+
+    /**
+     * 5.get 以map方式进行提交
+     *
+     * @param map<String,String>  map集合
+     * @param url 为 除了网络环境外的后半段地址
+     *   此方法没有使用头部拦截器获取userid sessionid 而是采用头部入参的方式
+     * */
+    @GET
+    Observable<ResponseBody> getSomeThingMap(@Url String url,@QueryMap Map<String,String> map,@Header("userId") String userId,@Header("sessionId") String sessionId);
+
 
 }
