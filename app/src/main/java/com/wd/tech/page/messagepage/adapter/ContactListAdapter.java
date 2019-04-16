@@ -23,6 +23,8 @@ public class ContactListAdapter extends BaseExpandableListAdapter {
         this.groups = groups;
         this.children = children;
         this.mContext = mContext;
+
+        mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     //获取的群体数量，得到groups里元素的个数
@@ -63,23 +65,31 @@ public class ContactListAdapter extends BaseExpandableListAdapter {
     //获取一个视图显示给定组，存放groups
     @Override
     public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
-        TextView textView = getGenericView(24);
-        textView.setText(getGroup(i).toString());
-        return textView;
-//        if(view==null){
-//            view = mInflater.inflate(R.layout.item_contact_team,null);
-//        }
-//        GroupViewHolder gvh = new GroupViewHolder();
-//        gvh.tv_team_teamname = view.findViewById(R.id.tv_team_teamname);
-//        gvh.tv_team_teamname.setText(getGroup(i).toString());
-//        return view;
+//        TextView textView = getGenericView(24);
+//        textView.setText(getGroup(i).toString());
+//        return textView;
+        if(view==null){
+            view = mInflater.inflate(R.layout.item_contact_team,null);
+        }
+        GroupViewHolder gvh = new GroupViewHolder();
+        gvh.tv_team_teamname = view.findViewById(R.id.tv_team_teamname);
+        gvh.tv_team_teamname.setText(getGroup(i).toString());
+        return view;
     }
     //获取一个视图显示在给定的组 的儿童的数据，就是存放children
     @Override
     public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
-        TextView textView = getGenericView(18);
-        textView.setText(getChild(i, i1).toString());
-        return textView;
+//        TextView textView = getGenericView(18);
+//        textView.setText(getChild(i, i1).toString());
+        if(view==null){
+            view = mInflater.inflate(R.layout.item_contact_member,null);
+        }
+        ChildViewHolder cvh = new ChildViewHolder();
+        cvh.tv_member_name = view.findViewById(R.id.tv_member_name);
+        cvh.tv_member_signature = view.findViewById(R.id.tv_member_signature);
+        cvh.tv_member_name.setText(getChild(i,i1).toString());
+
+        return view;
 
     }
     //孩子在指定的位置是可选的，即：children中的元素是可点击的
@@ -87,26 +97,15 @@ public class ContactListAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int i, int i1) {
         return true;
     }
-    public TextView getGenericView(int mTextSize) {
-        // Layout parameters for the ExpandableListView
-        AbsListView.LayoutParams lp = new AbsListView.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        TextView textView = new TextView(mContext);
-        textView.setLayoutParams(lp);
-        textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
-        textView.setPadding(42, 12, 12, 12);
-        textView.setTextSize(mTextSize);
-        textView.setTextColor(Color.BLACK);
-        return textView;
-    }
 
     private class GroupViewHolder{
        TextView tv_team_teamname;
 
     }
     private class ChildViewHolder{
-
+       TextView tv_member_signature;
+       TextView tv_member_name;
     }
 
 }
