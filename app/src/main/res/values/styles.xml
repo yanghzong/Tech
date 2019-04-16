@@ -10,7 +10,7 @@
 
     <!--共同属性抽取-->
     
-    1. 宽高自适应 并 居中展示(在RelativeLayout下)
+   <!-- 1. 宽高自适应 并 居中展示(在RelativeLayout下)-->
     <style name="Center_Display">
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_width">wrap_content</item>

@@ -7,13 +7,18 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.wd.tech.application.MyApplication;
 import com.wd.tech.utils.networkutil.MyInterceptor;
 import com.wd.tech.utils.networkutil.NetUtil;
+import com.wd.tech.utils.encryptionverificationutil.SSLSocketFactoryCompat;
 import com.wd.tech.utils.storageutil.SPUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.cert.CertificateException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.X509TrustManager;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -50,6 +55,8 @@ public class RxRetrofitUtils {
     //缓存声明
     File httpCacheDirectory = new File("/sdcard", "cache_xx");
     Cache cache  = new Cache(httpCacheDirectory, 10240 * 1024 * 10); //10M
+    private final SSLSocketFactory sslSocketFactory;
+    private final X509TrustManager trustAllCert;
 
     /**
      * 单例模式 构造方法
@@ -75,12 +82,33 @@ public class RxRetrofitUtils {
         map.put("sessionId",sessionId);
         map.put("userId",userId+"");
 
+        //使用https
+        try {
+            // 自定义一个信任所有证书的TrustManager，添加SSLSocketFactory的时候要用到
+            trustAllCert = new X509TrustManager() {
+                @Override
+                public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                }
+                @Override
+                public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                }
+                @Override
+                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                    return new java.security.cert.X509Certificate[]{};
+                }
+            };
+            sslSocketFactory = new SSLSocketFactoryCompat(trustAllCert);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
         //Okhttpclient对象的创建
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)
-                .addInterceptor(new MyInterceptor(map))//拦截器添加请求头
+                .sslSocketFactory(sslSocketFactory,trustAllCert)
+                //.addInterceptor(new MyInterceptor(map))//拦截器添加请求头
                 .addInterceptor(httpLoggingInterceptor)//添加日志拦截器
                 .addNetworkInterceptor(new Interceptor() {//添加缓存
                     @Override
@@ -111,6 +139,8 @@ public class RxRetrofitUtils {
                 })
                 .cache(cache)
                 .build();
+
+
 
         //创建Retrofit对象  添加日志拦截器
         rbuilder = new Retrofit.Builder()
@@ -230,6 +260,8 @@ public class RxRetrofitUtils {
      *
      * */
     private RetrofitIView getRetrofitIViewMethod() {
+        //API.APIBaseOuternetUrl  外网
+        //API.APIBaseIntranetUrl  内网
         Retrofit retrofit = rbuilder.baseUrl(API.APIBaseOuternetUrl).build();
         RetrofitIView retrofitIView = retrofit.create(RetrofitIView.class);
         return retrofitIView;

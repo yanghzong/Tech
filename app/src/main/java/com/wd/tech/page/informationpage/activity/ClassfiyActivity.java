@@ -3,13 +3,18 @@ package com.wd.tech.page.informationpage.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.wd.tech.R;
+import com.wd.tech.baseclass.BaseActivity;
 
-public class ClassfiyActivity extends AppCompatActivity {
+public class ClassfiyActivity extends BaseActivity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_classfiy);
+    public void initViews() {
+
+    }
+
+    @Override
+    protected int getContentViewID() {
+        return 0;
     }
 }

@@ -9,20 +9,20 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraint_search"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="@dimen/dp_52"
         android:background="#ffffff"
         >
         <EditText
             android:id="@+id/edit_search_contactlist"
-            android:layout_width="336dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/dp_336"
+            android:layout_height="@dimen/dp_32"
             android:background="@drawable/corners_search"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:drawablePadding="16dp"
+            android:drawablePadding="@dimen/dp_16"
             android:hint="Search"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/dp_10"
             android:drawableLeft="@mipmap/common_nav_btn_search_n_hdpi"
             />
 
@@ -30,20 +30,20 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layout_contact_group"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dp_50"
         app:layout_constraintTop_toBottomOf="@id/constraint_search"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="@dimen/dp_1"
         android:background="#ffffff"
         >
         <ImageView
             android:id="@+id/Image_contact_group"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
             android:background="@mipmap/nav_btn_setting_n_hdpi"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginLeft="12dp"
+            android:layout_marginLeft="@dimen/dp_12"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -53,8 +53,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="群组"
             android:textColor="#333333"
-            android:textSize="14sp"
-            android:layout_marginLeft="10dp"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginLeft="@dimen/dp_10"
             />
     </android.support.constraint.ConstraintLayout>
     <ExpandableListView

@@ -11,6 +11,10 @@
     <string name="userPaw">密码</string>
     <string name="btn_fastregist">快速注册</string>
     <string name="thirdpartylogin">第三方账号快捷登录</string>
+    <!--注册界面-->
+    <string name="btn_noteverifyfastregist">短信验证快速注册</string>
+    <string name="btn_register">注册</string>
+    <string name="btn_nickname">昵称</string>
 
     <!--底部导航文字-->
     <string name="txt_information_homebtnbuttom">资讯</string>

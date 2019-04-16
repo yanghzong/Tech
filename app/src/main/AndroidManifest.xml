@@ -37,8 +37,12 @@
 
 
         <!-- 微信第三方登录 -->
-        //清单注册
+       <!-- //清单注册
         //第三方微信登录
+=======-->
+        <!--微信第三方登录-->
+<!--
+>>>>>>> 690e8cc1912a235b9e16f18e45e81ebaabe451e9-->
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

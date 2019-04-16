@@ -34,6 +34,7 @@ import java.util.List;
  * */
 public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
+
     /**
      * 标识符定义区
      *
