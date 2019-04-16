@@ -152,4 +152,29 @@ public class Model implements ContractClass.IM {
         });
     }
 
+    @Override
+    public void doGetNetSomeThingM(String url, Map<String, String> map, String userId, String sessionId, final ICallBack iCallBack, final Type type) {
+        //通过工具类对象 调用方法
+        RxRetrofitUtils.getInstance().doGetMapSomeThing(url,map,userId,sessionId,new RxRetrofitUtils.RxRetrofitListener() {
+            @Override
+            public void onSuccessU(String data) {
+                //成功返回数据 使用Gson进行解析
+                Object o = new Gson().fromJson(data, type);
+                //判断对象是否为空
+                if(iCallBack!=null){
+                    iCallBack.onSuccessIC(o);
+                }
+            }
+
+            @Override
+            public void onFailed(String message) {
+                //数据返回失败
+                //判断对象是否为空
+                if(iCallBack!=null){
+                    iCallBack.onFailed(message);
+                }
+            }
+        });
+    }
+
 }

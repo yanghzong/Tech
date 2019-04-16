@@ -26,4 +26,7 @@ public class API {
     //4.咨询页面轮播图
     public static final String  NewsAdvisoryBannerUrl= "techApi/information/v1/bannerShow";
 
+    //根据手机号查询用户信息
+    public static final String FindUserByPhoneUrl="techApi/user/verify/v1/findUserByPhone";
+
 }

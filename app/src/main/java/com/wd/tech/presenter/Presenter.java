@@ -162,6 +162,29 @@ public class Presenter implements ContractClass.IP {
         },type);
     }
 
+    @Override
+    public void doGetNetSomeThingP(String url, Map<String, String> map, String userId, String sessionId, Type type) {
+        //通过Model对象  调用方法dopost方法
+        //通过Model对象  调用方法
+        mmodel.doGetNetSomeThingM(url,map , userId,sessionId,new ICallBack() {
+            @Override
+            public void onSuccessIC(Object o) {
+                if(o!=null){
+                    if(miview!=null){
+                        miview.onSuccessIV(o);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailed(String message) {
+                if(miview!=null){
+                    miview.onFailed(message);
+                }
+            }
+        },type);
+    }
+
     /**
      * 0.1.解除关联
      *
