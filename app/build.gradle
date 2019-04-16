@@ -100,8 +100,10 @@ dependencies {
     implementation 'com.facebook.fresco:fresco:0.14.1'
     implementation project(':SlidingMenu-master')
     //xbanner轮播
-    implementation 'com.github.xiaohaibin:XBanner:1.6.1'
+    implementation 'com.xhb:xbanner:1.4.7'
     //smartrefresh上拉加载，下拉刷新
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-12'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-12'
+
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
 }

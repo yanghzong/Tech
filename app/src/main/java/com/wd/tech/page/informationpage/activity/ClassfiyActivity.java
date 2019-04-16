@@ -1,7 +1,5 @@
 package com.wd.tech.page.informationpage.activity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.wd.tech.baseclass.BaseActivity;
 

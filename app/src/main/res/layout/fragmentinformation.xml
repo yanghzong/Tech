@@ -49,21 +49,29 @@
         android:layout_height="match_parent"
         app:srlAccentColor="#00000000"
         app:srlPrimaryColor="#00000000">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-          <com.stx.xhb.xbanner.XBanner
-              android:layout_width="match_parent"
-              android:layout_height="@dimen/dp_300"
-              android:id="@+id/xbanner_advisory"/>
+
+            <com.stx.xhb.xbanner.XBanner
+                android:id="@+id/newsadvisory_banner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_140"
+                app:AutoPlayTime="3000"
+                app:isClipChildrenMode="true"
+                app:pointsVisibility="false" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/info_rv_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
+        </ScrollView>
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 

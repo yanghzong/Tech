@@ -43,7 +43,7 @@ public class NewsAdvisoryAdapter extends RecyclerView.Adapter<NewsAdvisoryAdapte
         }else{
             holder.newsAdvisoryBook.setImageResource(R.mipmap.common_icon_collect_s_hdpi);
         }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int id = list.get(position).getId();
@@ -51,7 +51,7 @@ public class NewsAdvisoryAdapter extends RecyclerView.Adapter<NewsAdvisoryAdapte
                     commodityClickListener.onCommodityClick(id);
                 }
             }
-        });
+        });*/
 
     }
 

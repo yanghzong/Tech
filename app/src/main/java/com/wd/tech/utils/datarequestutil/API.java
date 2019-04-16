@@ -25,8 +25,12 @@ public class API {
     public static final String APIWXLoginUrl="techApi/user/v1/weChatLogin";
     //4.咨询页面轮播图
     public static final String  NewsAdvisoryBannerUrl= "techApi/information/v1/bannerShow";
+    //咨询页面展示列表
+    public static final String NewsAdvisoryListUrl="techApi/information/v1/infoRecommendList";
 
     //根据手机号查询用户信息
     public static final String FindUserByPhoneUrl="techApi/user/verify/v1/findUserByPhone";
+
+    //
 
 }
