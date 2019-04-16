@@ -24,4 +24,7 @@ public class API {
     //微信登录
     public static final String APIWXLoginUrl="techApi/user/v1/weChatLogin";
 
+    //4 社区列表
+    public static final String APICommunityListUrl="techApi/community/v1/findCommunityList";
+
 }

@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.wd.tech.R;
@@ -61,6 +60,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     private ImageView imgHeadPhotoSlidingMenu;
     private TextView txtLoginAndRegistSlidingMenu;
     private Button btnDayAndNight;
+    private boolean islogin;
 
     /**
      * 4.初始化控件
@@ -160,6 +160,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void setListener() {
         super.setListener();
+        //6.0 SP拿值
+        getSPUtils();
         //6.1. 设置侧滑菜单栏
         setSlidingMenu();
         //6.2 ViewPager设置
@@ -237,8 +239,16 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         //设置滑动后剩余部分
         slidingMenu.setBehindOffset(150);
         //为侧滑菜单设置布局
+        SlidingMenuLayout();
+    }
+
+    /**
+     * 为侧滑菜单设置布局
+     *
+     * */
+    private void SlidingMenuLayout() {
         //首先判断
-        if(!ISLOGIN){//如果没有登录,就展示提示登录布局
+        if(!islogin){//如果没有登录,就展示提示登录布局
             //初始化布局
             slidingMenu.setMenu(R.layout.slidingmenu);
             //初始化控件
@@ -256,6 +266,14 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         }
     }
 
+    /**
+     * 6.0 SP拿值
+     *
+     * */
+    private void getSPUtils() {
+        //登录成功的标识，用来改变侧滑布局
+        islogin = SPUtil.getBoolean(mcontext, "ISLOGIN", false);
+    }
 
     /**
      * 5.初始化数据

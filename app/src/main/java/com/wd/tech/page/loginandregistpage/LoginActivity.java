@@ -1,6 +1,5 @@
 package com.wd.tech.page.loginandregistpage;
 
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,12 +12,13 @@ import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.wd.tech.R;
 import com.wd.tech.baseclass.BaseActivity;
 import com.wd.tech.iview.IView;
+import com.wd.tech.page.HomeActivity;
 import com.wd.tech.page.loginandregistpage.bean.UserLoginBean;
-import com.wd.tech.page.loginandregistpage.bean.UserRegisterBean;
 import com.wd.tech.presenter.Presenter;
 import com.wd.tech.utils.datarequestutil.API;
 import com.wd.tech.utils.encryptionverificationutil.RegularVerification;
 import com.wd.tech.utils.encryptionverificationutil.RsaCoder;
+import com.wd.tech.utils.storageutil.SPUtil;
 import com.wd.tech.wxapi.WXLoginUtils;
 
 import java.lang.reflect.Type;
@@ -93,6 +93,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                        //4 进行 map封装
                        Map map = getMap("phone",userphone,"pwd",signPwd);
                        //5 调用Presenter进行请求
+                       //在进行登录注册的请求时，因为不需要拦截器，需要将标识改变
+                       SPUtil.putBoolean(mcontext,"TOLOGIN",true);
                        presenter.doPostMapP(API.APIUserLoginUrl,map,typeUserRegister);
                    }
 
@@ -140,7 +142,23 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 String status = userLoginBean.getStatus();
                 String message = userLoginBean.getMessage();
                 Log.i("登录打印", "onSuccessIV: "+status+"=========="+message);
-                showShortToast(message);
+                if(status.equals("0000")){//如果登录成功 就进行用户信息存储  和 跳转
+                    UserLoginBean.ResultBean result = userLoginBean.getResult();
+                    if(result!=null){
+                        String sessionId = result.getSessionId();
+                        int userId = result.getUserId();
+                        SPUtil.putString(mcontext,"SESSIONID",sessionId);
+                        SPUtil.putInt(mcontext,"USERID",userId);
+                        showShortToast(message);
+                        //改变标识 登录布局改变
+                        SPUtil.putBoolean(mcontext,"ISLOGIN",true);
+                        //成功后 跳转到Home界面
+                        startAvtivity(HomeActivity.class);
+                        showShortToast(message);//提示
+                        finish();
+                    }
+                    showShortToast(message);
+                }
             }
         }
     }

@@ -74,6 +74,7 @@ dependencies {
     /*implementation 'me.jessyan:autosize:1.0.1' //头条适配*/
     //微信第三方登录 依赖添加
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+
     /**
      * 2.使用Retrofit+RxJava+日志拦截器需要用到的依赖:
      *
@@ -86,11 +87,12 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     //如果使用OKHttp了，就将以前的依赖使用下面的依赖替换掉，下面的依赖会自带拦截器：
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.0'
+
     /**
      * 3.数据解析类
      * */
-    implementation 'com.google.code.gson:gson:2.8.5'
-    //3.gson等第一次导入的依赖
+    implementation 'com.google.code.gson:gson:2.8.5'// gson等第一次导入的依赖
+
     /**
      * 4.图片类型
      * */
@@ -98,4 +100,10 @@ dependencies {
     //需要在Application中全局初始化
     implementation 'com.facebook.fresco:fresco:0.14.1'
     implementation project(':SlidingMenu-master')
+
+    /**
+     * 列表展示
+     *
+     * */
+    implementation 'com.jcodecraeer:xrecyclerview:1.3.2'//XrecyclerView的依赖
 }

@@ -5,14 +5,13 @@ import android.util.Log;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.wd.tech.application.MyApplication;
+import com.wd.tech.utils.encryptionverificationutil.SSLSocketFactoryCompat;
 import com.wd.tech.utils.networkutil.MyInterceptor;
 import com.wd.tech.utils.networkutil.NetUtil;
-import com.wd.tech.utils.encryptionverificationutil.SSLSocketFactoryCompat;
 import com.wd.tech.utils.storageutil.SPUtil;
 
 import java.io.File;
 import java.io.IOException;
-import java.security.cert.CertificateException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -57,12 +56,13 @@ public class RxRetrofitUtils {
     Cache cache  = new Cache(httpCacheDirectory, 10240 * 1024 * 10); //10M
     private final SSLSocketFactory sslSocketFactory;
     private final X509TrustManager trustAllCert;
+    private final OkHttpClient.Builder okHttpClient;
 
     /**
      * 单例模式 构造方法
      *
      * */
-    private RxRetrofitUtils() {
+    private RxRetrofitUtils() throws IOException {
         //创建日志拦截器
         HttpLoggingInterceptor.Level level = HttpLoggingInterceptor.Level.BODY;
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
@@ -75,10 +75,11 @@ public class RxRetrofitUtils {
         httpLoggingInterceptor.setLevel(level);
 
         //通过SP得到存储的sessionid 和 userid
-        int userId = (int) SPUtil.getInt(MyApplication.applicationContext, "userId", 0);
-        String sessionId = (String) SPUtil.getString(MyApplication.applicationContext, "sessionId", "");
+        int userId = (int) SPUtil.getInt(MyApplication.applicationContext, "USERID", 0);
+        String sessionId = (String) SPUtil.getString(MyApplication.applicationContext, "SESSIONID", "");
+        boolean toLoginandRegist = SPUtil.getBoolean(MyApplication.applicationContext, "TOLOGIN", false);//代表成功的标识
 
-         Map<String,String> map = new HashMap<>();
+        Map<String,String> map = new HashMap<>();
         map.put("sessionId",sessionId);
         map.put("userId",userId+"");
 
@@ -87,10 +88,10 @@ public class RxRetrofitUtils {
             // 自定义一个信任所有证书的TrustManager，添加SSLSocketFactory的时候要用到
             trustAllCert = new X509TrustManager() {
                 @Override
-                public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) {
                 }
                 @Override
-                public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) {
                 }
                 @Override
                 public java.security.cert.X509Certificate[] getAcceptedIssuers() {
@@ -103,11 +104,37 @@ public class RxRetrofitUtils {
         }
 
         //Okhttpclient对象的创建
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .connectTimeout(10, TimeUnit.SECONDS)
+
+        //首先判断是否是登录注册接口请求，如果是，就不需要加拦截器
+        if(toLoginandRegist){//如果是，就不添加拦截器
+            okHttpClient = getOKHttpClient(httpLoggingInterceptor);
+        }else{//如果不是 就添加
+            okHttpClient = getOKHttpClient(httpLoggingInterceptor);
+            okHttpClient.addInterceptor(new MyInterceptor(map));//拦截器添加请求头
+        }
+        OkHttpClient okHttpClients = this.okHttpClient.build();
+
+
+        //创建Retrofit对象  添加日志拦截器
+        rbuilder = new Retrofit.Builder()
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClients);
+
+    }
+
+    /**
+     * OkHttp设置
+     *
+     *  不添加拦截器
+     *
+     * */
+    private OkHttpClient.Builder getOKHttpClient(HttpLoggingInterceptor httpLoggingInterceptor) {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        OkHttpClient.Builder OkHttpClientBuilder = builder.connectTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)
-                .sslSocketFactory(sslSocketFactory,trustAllCert)
+                .sslSocketFactory(sslSocketFactory, trustAllCert)
                 //.addInterceptor(new MyInterceptor(map))//拦截器添加请求头
                 .addInterceptor(httpLoggingInterceptor)//添加日志拦截器
                 .addNetworkInterceptor(new Interceptor() {//添加缓存
@@ -117,9 +144,9 @@ public class RxRetrofitUtils {
                         Log.e("MainActivity", "新请求 =request==" + request.toString());
 
                         Response response = chain.proceed(request);
-                        Response response_build ;
+                        Response response_build;
                         if (NetUtil.checkNet(MyApplication.applicationContext)) {
-                            int maxAge = 60 * 60*24; // 有网络的时候从缓存1天后失效
+                            int maxAge = 60 * 60 * 24; // 有网络的时候从缓存1天后失效
                             response_build = response.newBuilder()
                                     .removeHeader("Pragma")
                                     .removeHeader("Cache-Control")
@@ -137,17 +164,8 @@ public class RxRetrofitUtils {
                         return response_build;
                     }
                 })
-                .cache(cache)
-                .build();
-
-
-
-        //创建Retrofit对象  添加日志拦截器
-        rbuilder = new Retrofit.Builder()
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(okHttpClient);
-
+                .cache(this.cache);
+        return OkHttpClientBuilder;
     }
 
     /**
@@ -158,7 +176,11 @@ public class RxRetrofitUtils {
         if(instance==null){
             synchronized (RxRetrofitUtils.class){
                 if(instance==null){
-                    instance = new RxRetrofitUtils();
+                    try {
+                        instance = new RxRetrofitUtils();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

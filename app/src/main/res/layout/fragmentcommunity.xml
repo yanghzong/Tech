@@ -6,15 +6,13 @@
     >
 
     //1 消息页
-    <TextView
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="@dimen/dp_30"
-        android:textColor="#F00"
-        android:text="张自佟"
-        android:layout_gravity="center"
-        android:gravity="center"
-        />
+        android:layout_height="wrap_content"
+        android:id="@+id/xlv_communitylist"
+        >
+
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
 
 
 
