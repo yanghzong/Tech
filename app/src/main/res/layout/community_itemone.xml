@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/coumm_item_one_img"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        app:placeholderImage="@mipmap/common_btn_picture_n_hdpi"
+        app:roundAsCircle="true"
+        android:layout_marginTop="@dimen/dp_32"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10"
+        />
+    <TextView
+        android:id="@+id/coumm_item_one_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/coumm_item_one_img"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_32"
+        android:text="星空"
+        android:textSize="@dimen/sp_14"
+        />
+
+    <TextView
+        android:id="@+id/coumm_item_one_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_35"
+        android:layout_toRightOf="@id/coumm_item_one_name"
+        android:textSize="@dimen/sp_10"
+        android:text="1分钟前"
+        />
+
+    <TextView
+        android:id="@+id/coumm_item_one_bq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/coumm_item_one_img"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_toRightOf="@id/coumm_item_one_img"
+        android:text="天涯海角"
+        />
+
+    <TextView
+        android:id="@+id/coumm_item_one_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/coumm_item_one_img"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginBottom="@dimen/dp_18"
+        android:text="这是一个标题"
+        />
+
+    <TextView
+        android:id="@+id/coumm_item_one_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="这是内容"
+        android:layout_below="@id/coumm_item_one_title"
+        android:layout_marginLeft="@dimen/dp_12"
+        />
+
+
+    <TextView
+        android:id="@+id/coumm_item_one_expand_or_fold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="全文"
+        android:textColor="#325093"
+        android:enabled="true"
+        android:lines="3"
+        android:layout_toRightOf="@id/coumm_item_one_content"
+        android:layout_below="@+id/coumm_item_one_title"
+        />
+
+    <RelativeLayout
+        android:id="@+id/community_one_buttom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/coumm_item_one_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:padding="@dimen/dp_10"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
+            android:src="@mipmap/common_icon_prise_n_hdpi"
+            android:id="@+id/coumm_item_one_share"
+            android:layout_toLeftOf="@id/coumm_item_one_share_num"
+            />
+        <ImageView
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
+            android:src="@mipmap/common_icon_comment_n_hdpi"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/coumm_item_one_news"
+            />
+
+        //评论数量
+        <TextView
+            android:id="@+id/coumm_item_one_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/coumm_item_one_news"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:text="0" />
+        //点赞数量
+        <TextView
+            android:id="@+id/coumm_item_one_share_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/dp_21"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:text="6" />
+
+
+    </RelativeLayout>
+
+    //评论区
+    <LinearLayout
+        android:id="@+id/community_one_pl_buttom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_125"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_12"
+        android:background="#DDD9D9"
+        android:layout_below="@+id/community_one_buttom"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/coumm_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="河马"
+                android:textSize="@dimen/sp_14"
+                />
+
+            <TextView
+                android:id="@+id/coumm_item_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_toRightOf="@id/coumm_item_name"
+                android:textSize="@dimen/sp_10"
+                android:text="评论内容"
+                android:enabled="true"
+                android:lines="1"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/coumm_item_name2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="河马"
+                android:textSize="@dimen/sp_14"
+                />
+
+            <TextView
+                android:id="@+id/coumm_item_time2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_toRightOf="@id/coumm_item_name2"
+                android:textSize="@dimen/sp_10"
+                android:text="评论内容"
+                android:enabled="true"
+                android:lines="1"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/coumm_item_name3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="河马"
+                android:textSize="@dimen/sp_14"
+                />
+
+            <TextView
+                android:id="@+id/coumm_item_time3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_toRightOf="@id/coumm_item_name3"
+                android:textSize="@dimen/sp_10"
+                android:text="评论内容"
+                android:enabled="true"
+                android:lines="1"
+                />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_click_seekPL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击查看更多评论"
+            android:textSize="@dimen/sp_12"
+            android:textColor="#C4343CDD"
+            android:gravity="center"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_6"
+        android:background="#ebe5e5"
+        android:layout_below="@id/community_one_pl_buttom"
+        android:layout_marginTop="@dimen/dp_10"
+        />
+</RelativeLayout>

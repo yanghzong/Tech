@@ -33,4 +33,7 @@ public class API {
 
     //
 
+    //4 社区列表
+    public static final String APICommunityListUrl="techApi/community/v1/findCommunityList";
+
 }

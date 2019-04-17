@@ -16,9 +16,9 @@ import com.wd.tech.presenter.Presenter;
 import com.wd.tech.utils.datarequestutil.API;
 import com.wd.tech.utils.encryptionverificationutil.RegularVerification;
 import com.wd.tech.utils.encryptionverificationutil.RsaCoder;
+import com.wd.tech.utils.storageutil.SPUtil;
 
 import java.lang.reflect.Type;
-import java.security.PublicKey;
 import java.util.Map;
 
 /**
@@ -96,6 +96,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         String signPwd = RsaCoder.encryptByPublicKey(registerNikePwd);
                         //4 进行 map封装
                         Map map = getMap("phone", registerPhone,"nickName",registerNikeName,"pwd",signPwd);
+                        //在进行登录注册的请求时，因为不需要拦截器，需要将标识改变
+                        SPUtil.putBoolean(mcontext,"TOLOGIN",true);
                         //5 调用Presenter进行请求
                         presenter.doPostMapP(API.APIUserRegisterUrl,map,typeUserRegister);
                     }
@@ -168,6 +170,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                String message = userRegisterBean.getMessage();
                Log.i("注册打印", "onSuccessIV: "+status+"=========="+message);
                showShortToast(message);
+               startAvtivity(LoginActivity.class);
+               finish();
            }
        }
     }

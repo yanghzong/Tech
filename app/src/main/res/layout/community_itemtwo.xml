@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    >
+    <!--<com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        app:placeholderImage="@mipmap/login_qq"
+        app:roundAsCircle="true"
+        android:id="@+id/coumm_item_two_img"
+        android:layout_margin="@dimen/dp_10"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/coumm_item_two_name"
+        android:layout_toRightOf="@id/coumm_item_two_img"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_12"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/coumm_item_two_time"
+        android:layout_alignBottom="@id/coumm_item_two_img"
+        android:layout_toRightOf="@id/coumm_item_two_img"
+        android:layout_marginLeft="@dimen/dp_10"
+        />
+
+    <ImageView
+        android:layout_width="@dimen/dp_16"
+        android:layout_height="@dimen/dp_16"
+        android:src="@mipmap/vip"
+        android:id="@+id/coumm_item_two_vip"
+        android:layout_toRightOf="@id/coumm_item_two_name"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_12"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/follow"
+        android:textColor="#0d0b0b"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_10"
+        android:id="@+id/coumm_item_two_follow"
+        android:background="@drawable/shape_circular"
+        android:paddingBottom="@dimen/dp_6"
+        android:paddingTop="@dimen/dp_6"
+        android:paddingLeft="@dimen/dp_12"
+        android:paddingRight="@dimen/dp_12"
+        android:layout_toLeftOf="@id/coumm_item_two_friends"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="已关注"
+        android:textColor="#0d0b0b"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_10"
+        android:id="@+id/coumm_item_two_unfollow"
+        android:background="@drawable/shape_circular_red"
+        android:paddingBottom="@dimen/dp_6"
+        android:paddingTop="@dimen/dp_6"
+        android:paddingLeft="@dimen/dp_12"
+        android:paddingRight="@dimen/dp_12"
+        android:layout_toLeftOf="@id/coumm_item_two_friends"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/friends"
+        android:textColor="#0d0b0b"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_10"
+        android:id="@+id/coumm_item_two_friends"
+        android:background="@drawable/shape_circular"
+        android:paddingBottom="@dimen/dp_6"
+        android:paddingTop="@dimen/dp_6"
+        android:paddingLeft="@dimen/dp_12"
+        android:paddingRight="@dimen/dp_12"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/coumm_item_two_img"
+        android:id="@+id/coumm_item_two_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10"
+        />
+
+    <TextView
+        android:id="@+id/coumm_item_two_expand_or_fold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="全文"
+        android:textColor="#325093"
+        android:layout_below="@id/coumm_item_two_content"
+        android:layout_marginLeft="@dimen/dp_12"
+        />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        app:placeholderImage="@mipmap/login_qq"
+        android:layout_below="@id/coumm_item_two_expand_or_fold"
+        android:id="@+id/coumm_item_two_sdv_img"
+        app:roundedCornerRadius="@dimen/dp_10"
+        android:layout_margin="@dimen/dp_10"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/coumm_item_two_sdv_img"
+        android:layout_marginTop="@dimen/dp_16"
+        android:id="@+id/rela_two"
+        android:padding="@dimen/dp_10"
+        >
+        <ImageView
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
+            android:src="@mipmap/share"
+            android:id="@+id/coumm_item_two_share"
+            android:layout_toLeftOf="@id/coumm_item_two_share_num"
+            />
+        <ImageView
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
+            android:src="@mipmap/news"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/coumm_item_two_news"
+            />
+        <ImageView
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
+            android:src="@mipmap/fabulous"
+            android:id="@+id/coumm_item_two_fabulous"
+            android:layout_marginLeft="@dimen/dp_21"
+            />
+        <ImageView
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
+            android:src="@mipmap/red_zan"
+            android:id="@+id/coumm_item_two_unfabulous"
+            android:layout_marginLeft="@dimen/dp_21"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/coumm_item_two_fabulous"
+            android:id="@+id/coumm_item_two_power"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:text="6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/coumm_item_two_news"
+            android:id="@+id/coumm_item_two_comment"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:text="6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:id="@+id/coumm_item_two_share_num"
+            android:layout_marginRight="@dimen/dp_21"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:text="6" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rela_two"
+        android:id="@+id/coumm_item_two_tv_comment"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/coumm_item_two_tv_comment"
+        android:layout_marginTop="@dimen/dp_6"
+        android:id="@+id/coumm_item_two_tv_see"
+        android:text="@string/see"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:visibility="gone"
+        />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_6"
+        android:background="#ebe5e5"
+        android:layout_below="@id/coumm_item_two_tv_see"
+        android:layout_marginTop="@dimen/dp_10"
+        />
+-->
+</RelativeLayout>
