@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/dp_10"
+    android:paddingRight="@dimen/dp_10">
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--搜索框-->
+        <RelativeLayout
+            android:layout_width="@dimen/dp_300"
+            android:layout_height="@dimen/dp_40"
+            android:background="@drawable/search_rl_shape"
+            android:paddingLeft="@dimen/dp_20">
+
+            <ImageView
+                android:id="@+id/img_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/common_nav_btn_search_n_hdpi" />
+
+            <EditText
+                android:id="@+id/search_et_content"
+                android:layout_width="@dimen/dp_250"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/img_search"
+                android:background="@null"
+                android:hint="请输入要搜索的内容"
+                android:paddingLeft="@dimen/dp_10" />
+
+
+        </RelativeLayout>
+
+        <!--取消按钮-->
+        <TextView
+            android:id="@+id/search_tv_cancal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="取消"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+    </RelativeLayout>
+
+    <!--搜索前-->
+    <LinearLayout
+        android:id="@+id/search_ll_front"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="热搜词" />
+
+        <com.example.library.AutoFlowLayout
+            android:id="@+id/search_afl_hot"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_150" />
+
+        <com.example.library.AutoFlowLayout
+            android:id="@+id/search_afl_later"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_150"/>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

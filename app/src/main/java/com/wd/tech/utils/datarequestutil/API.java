@@ -27,6 +27,8 @@ public class API {
     public static final String  NewsAdvisoryBannerUrl= "techApi/information/v1/bannerShow";
     //咨询页面展示列表
     public static final String NewsAdvisoryListUrl="techApi/information/v1/infoRecommendList";
+    //咨询板块咨询分类图片列表
+    public static final String  NewsAdvisoryClassFiyUrl="techApi/information/v1/findAllInfoPlate";
 
     //根据手机号查询用户信息
     public static final String FindUserByPhoneUrl="techApi/user/verify/v1/findUserByPhone";

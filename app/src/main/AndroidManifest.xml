@@ -66,6 +66,8 @@
         <activity android:name=".page.loginandregistpage.RegisterActivity" />
         <activity android:name=".page.messagepage.activity.AddAllActivity" />
         <activity android:name=".page.informationpage.activity.ClassfiyActivity" />
+        <activity android:name=".page.informationpage.activity.NewsAdvisoryDetailsActivity" />
+        <activity android:name=".page.informationpage.activity.NewsAdvisorySearchActivity"></activity>
     </application>
 
 </manifest>

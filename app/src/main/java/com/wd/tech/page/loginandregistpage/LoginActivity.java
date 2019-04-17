@@ -1,10 +1,7 @@
 package com.wd.tech.page.loginandregistpage;
 
-<<<<<<< HEAD
 import android.content.Intent;
 import android.text.TextUtils;
-=======
->>>>>>> 49c773d180c1bdb8335f9b8bfd5ec100013442e0
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +25,8 @@ import com.wd.tech.wxapi.WXLoginUtils;
 
 import java.lang.reflect.Type;
 import java.util.Map;
+
+import retrofit2.http.HEAD;
 
 /**
  * 登录页
@@ -149,13 +148,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 String status = userLoginBean.getStatus();
                 String message = userLoginBean.getMessage();
                 Log.i("登录打印", "onSuccessIV: "+status+"=========="+message);
-<<<<<<< HEAD
                 showShortToast(message);
                 // 拿到 身份验证
                 spUtil.putInt(this,"userId",userLoginBean.getResult().getUserId());
                 spUtil.putString(this,"sessionId",userLoginBean.getResult().getSessionId()+"");
                 startAvtivity(HomeActivity.class);
-=======
                 if(status.equals("0000")){//如果登录成功 就进行用户信息存储  和 跳转
                     UserLoginBean.ResultBean result = userLoginBean.getResult();
                     if(result!=null){
@@ -173,7 +170,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     }
                     showShortToast(message);
                 }
->>>>>>> 49c773d180c1bdb8335f9b8bfd5ec100013442e0
             }
         }
     }

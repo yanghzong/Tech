@@ -75,18 +75,13 @@ public class RxRetrofitUtils {
         httpLoggingInterceptor.setLevel(level);
 
         //通过SP得到存储的sessionid 和 userid
-<<<<<<< HEAD
-        /*int userId = (int) SPUtil.getInt(MyApplication.applicationContext, "userId", 0);
-        String sessionId = (String) SPUtil.getString(MyApplication.applicationContext, "sessionId", "");
-=======
         int userId = (int) SPUtil.getInt(MyApplication.applicationContext, "USERID", 0);
         String sessionId = (String) SPUtil.getString(MyApplication.applicationContext, "SESSIONID", "");
         boolean toLoginandRegist = SPUtil.getBoolean(MyApplication.applicationContext, "TOLOGIN", false);//代表成功的标识
->>>>>>> 49c773d180c1bdb8335f9b8bfd5ec100013442e0
 
         Map<String,String> map = new HashMap<>();
         map.put("sessionId",sessionId);
-        map.put("userId",userId+"");*/
+        map.put("userId",userId+"");
 
         //使用https
         try {

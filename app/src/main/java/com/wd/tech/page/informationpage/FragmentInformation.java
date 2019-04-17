@@ -16,11 +16,10 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.stx.xhb.xbanner.XBanner;
 import com.wd.tech.R;
-import com.wd.tech.application.MyApplication;
 import com.wd.tech.baseclass.BaseFragment;
 import com.wd.tech.iview.IView;
 import com.wd.tech.page.informationpage.activity.ClassfiyActivity;
-import com.wd.tech.page.informationpage.activity.NewsAdvisoryListActivity;
+import com.wd.tech.page.informationpage.activity.NewsAdvisoryDetailsActivity;
 import com.wd.tech.page.informationpage.adapter.NewsAdvisoryAdapter;
 import com.wd.tech.page.informationpage.bean.NewsAdvisoryBean;
 import com.wd.tech.page.informationpage.bean.NewsBannerBean;
@@ -88,6 +87,19 @@ public class FragmentInformation extends BaseFragment implements IView, View.OnC
         newsAdvisorySearch.setOnClickListener(this);
         newsAdvisorySort.setOnClickListener(this);
         infoSrlLoad.setOnRefreshLoadMoreListener(this);
+        newsAdvisoryAdapter.setOnProductClickListener(new NewsAdvisoryAdapter.OnCommodityClickListener() {
+            @Override
+            public void onCommodityClick(int id) {
+                startAvtivity(NewsAdvisoryDetailsActivity.class);
+            }
+        });
+        //设置Item点击监听
+        newsadvisoryBanner.setOnItemClickListener(new XBanner.OnItemClickListener() {
+            @Override
+            public void onItemClick(XBanner banner, Object model, View view, int position) {
+
+            }
+        });
 
     }
 
@@ -101,15 +113,7 @@ public class FragmentInformation extends BaseFragment implements IView, View.OnC
         newsAdvisoryAdapter = new NewsAdvisoryAdapter(mcontext,newsAdvisorylist);
         rvNewsAdvisory.setAdapter(newsAdvisoryAdapter);
         rvNewsAdvisory.setLayoutManager(new LinearLayoutManager(mcontext,LinearLayoutManager.VERTICAL,false));
-        newsAdvisoryAdapter.setOnProductClickListener(new NewsAdvisoryAdapter.OnCommodityClickListener() {
-            @Override
-            public void onCommodityClick(int id) {
-               /* Intent intent=new Intent(mcontext,NewsAdvisoryListActivity.class);
-                String s = String.valueOf(id);
-                intent.putExtra("cid",s);
-                startActivity(intent);*/
-            }
-        });
+
 
     }
 
@@ -124,10 +128,10 @@ public class FragmentInformation extends BaseFragment implements IView, View.OnC
     }
 
     @Override
-    public void onSuccessIV(Object T) {
+    public void onSuccessIV(Object o) {
         //存放图片集合
-        if (T instanceof NewsBannerBean) {
-            final NewsBannerBean newsAdvisoryBannerList = (NewsBannerBean) T;
+        if (o instanceof NewsBannerBean) {
+            final NewsBannerBean newsAdvisoryBannerList = (NewsBannerBean) o;
             final List<String> images = new ArrayList<>();
             for (int i = 0; i < newsAdvisoryBannerList.getResult().size(); i++) {
                 images.add(newsAdvisoryBannerList.getResult().get(i).getImageUrl());
@@ -141,16 +145,10 @@ public class FragmentInformation extends BaseFragment implements IView, View.OnC
                     draweeView.setImageURI(images.get(position));
                 }
             });
-            //设置Item点击监听
-            newsadvisoryBanner.setOnItemClickListener(new XBanner.OnItemClickListener() {
-                @Override
-                public void onItemClick(XBanner banner, Object model, View view, int position) {
 
-                }
-            });
         }
-        if (T instanceof NewsAdvisoryBean) {
-            NewsAdvisoryBean newsAdvisoryBean = (NewsAdvisoryBean) T;
+        if (o instanceof NewsAdvisoryBean) {
+            NewsAdvisoryBean newsAdvisoryBean = (NewsAdvisoryBean) o;
             List<NewsAdvisoryBean.ResultBean> result = newsAdvisoryBean.getResult();
             if (!(result.size() > 0)) {
                 Toast.makeText(getActivity(), "暂无更多数据", Toast.LENGTH_SHORT).show();
@@ -179,16 +177,16 @@ public class FragmentInformation extends BaseFragment implements IView, View.OnC
 
                 break;
             case R.id.newsadvisory_sort:
-                Intent intent=new Intent(getContext(),ClassfiyActivity.class);
-                startActivity(intent);
+                startAvtivity(ClassfiyActivity.class);
                 break;
         }
     }
 
+
     @Override
     public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-        count+=5;
-        presenter.doGetP(API.NewsAdvisoryListUrl+page+count,type1);
+        page++;
+        presenter.doGetP(API.NewsAdvisoryListUrl+"?page="+page+"&count="+count, type1);
         infoSrlLoad.finishLoadMore();
     }
 
@@ -196,7 +194,7 @@ public class FragmentInformation extends BaseFragment implements IView, View.OnC
     public void onRefresh(@NonNull RefreshLayout refreshLayout) {
         newsAdvisorylist.clear();
         page = 1;
-        presenter.doGetP(API.NewsAdvisoryListUrl+page+count,type1);
+        presenter.doGetP(API.NewsAdvisoryListUrl+"?page="+page+"&count="+count, type1);
         infoSrlLoad.finishRefresh();
     }
 }
