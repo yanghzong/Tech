@@ -49,6 +49,12 @@ public class ClassfiyActivity extends BaseActivity implements IView {
         rvNewsAdvisorySort.setAdapter(newsAdvisoryClassFiyAdapter);
         //设置布局管理器
         rvNewsAdvisorySort.setLayoutManager(new GridLayoutManager(this,2));
+        newsAdvisoryClassFiyAdapter.setOnProductClickListener(new NewsAdvisoryClassFiyAdapter.OnCommodityClickListener() {
+            @Override
+            public void onCommodityClick(int id) {
+
+            }
+        });
     }
 
     @Override

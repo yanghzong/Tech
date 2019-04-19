@@ -16,6 +16,12 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+    <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+
+
     
 
 </resources>

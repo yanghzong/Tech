@@ -29,7 +29,10 @@ public class API {
     public static final String NewsAdvisoryListUrl="techApi/information/v1/infoRecommendList";
     //咨询板块咨询分类图片列表
     public static final String  NewsAdvisoryClassFiyUrl="techApi/information/v1/findAllInfoPlate";
-
+    //咨询板块模糊查询
+    public static final String  NewsAdvisorySearchUrl="techApi/information/v1/findInformationByTitle";
+   //咨询板块点击详情
+    public static final String  NewsAdvisoryDetailsUrl="techApi/information/v1/findInformationDetails";
     //根据手机号查询用户信息
     public static final String FindUserByPhoneUrl="techApi/user/verify/v1/findUserByPhone";
 

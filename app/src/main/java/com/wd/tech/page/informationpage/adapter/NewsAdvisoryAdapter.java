@@ -41,7 +41,7 @@ public class NewsAdvisoryAdapter extends RecyclerView.Adapter<NewsAdvisoryAdapte
         if (resultBean.getWhetherPay()==1){
             holder.newsAdvisoryBook.setImageResource(R.mipmap.common_icon_collect_s_hdpi);
         }else{
-            holder.newsAdvisoryBook.setImageResource(R.mipmap.common_icon_collect_s_hdpi);
+            holder.newsAdvisoryBook.setImageResource(R.mipmap.black_star);
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

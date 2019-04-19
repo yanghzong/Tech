@@ -1,6 +1,7 @@
 package com.wd.tech.page.informationpage;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ import com.wd.tech.baseclass.BaseFragment;
 import com.wd.tech.iview.IView;
 import com.wd.tech.page.informationpage.activity.ClassfiyActivity;
 import com.wd.tech.page.informationpage.activity.NewsAdvisoryDetailsActivity;
+import com.wd.tech.page.informationpage.activity.NewsAdvisorySearchActivity;
 import com.wd.tech.page.informationpage.adapter.NewsAdvisoryAdapter;
 import com.wd.tech.page.informationpage.bean.NewsAdvisoryBean;
 import com.wd.tech.page.informationpage.bean.NewsBannerBean;
@@ -90,7 +92,10 @@ public class FragmentInformation extends BaseFragment implements IView, View.OnC
         newsAdvisoryAdapter.setOnProductClickListener(new NewsAdvisoryAdapter.OnCommodityClickListener() {
             @Override
             public void onCommodityClick(int id) {
-                startAvtivity(NewsAdvisoryDetailsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("cid",id);
+                startAvtivity(NewsAdvisoryDetailsActivity.class,"cid",bundle);
+
             }
         });
         //设置Item点击监听
@@ -174,7 +179,7 @@ public class FragmentInformation extends BaseFragment implements IView, View.OnC
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.newadvisory_search:
-
+                startAvtivity(NewsAdvisorySearchActivity.class);
                 break;
             case R.id.newsadvisory_sort:
                 startAvtivity(ClassfiyActivity.class);

@@ -1,6 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#fff">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_12"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_20"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/newsadvisorydetails_tv_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2018-10-12 19:57"
+            android:textColor="#999"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            android:id="@+id/newsadvisorydetails_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="新闻标题XXX"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_22" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/newsadvisorydetails_sdv_icon"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_130"
+            android:layout_marginTop="@dimen/dp_10"
+            app:roundedCornerRadius="@dimen/dp_10" />
+
+        <WebView
+            android:id="@+id/newsadvisorydetails_wv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.example.library.AutoFlowLayout
+            android:id="@+id/newsadvisorydetails_afl_sort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
+    <!--底部条,评论框,点赞-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10">
+
+        <ImageView
+            android:id="@+id/news_iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/common_nav_btn_back_n_hdpi" />
+
+        <EditText
+            android:id="@+id/news_et_talk"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:background="#F2F2F2"
+            android:focusable="false"
+            android:hint="你来谈谈?"
+            android:paddingLeft="@dimen/dp_10"
+            android:textSize="@dimen/sp_12" />
+
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp_35"
+            android:layout_height="@dimen/dp_20">
+
+            <ImageView
+                android:id="@+id/news_iv_news"
+                android:layout_width="@dimen/dp_17"
+                android:layout_height="@dimen/dp_17"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/common_icon_comment_n_hdpi" />
+
+            <TextView
+                android:id="@+id/news_tv_talkNum"
+                android:layout_width="@dimen/dp_18"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/news_tv_shape"
+                android:gravity="center"
+                android:text="100"
+                android:textColor="#fff"
+                android:textSize="@dimen/sp_8" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp_35"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_20">
+
+            <CheckBox
+                android:id="@+id/news_cb_zan"
+                android:layout_width="@dimen/dp_17"
+                android:layout_height="@dimen/dp_17"
+                android:layout_centerInParent="true"
+                android:background="@drawable/news_zan"
+                android:button="@null" />
+
+            <TextView
+                android:id="@+id/news_tv_zanNum"
+                android:layout_width="@dimen/dp_18"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/news_tv_shape"
+                android:gravity="center"
+                android:text="100"
+                android:textColor="#fff"
+                android:textSize="@dimen/sp_8" />
+        </RelativeLayout>
+
+
+        <CheckBox
+            android:id="@+id/news_iv_book"
+            android:layout_width="@dimen/dp_17"
+            android:layout_height="@dimen/dp_17"
+            android:layout_marginLeft="@dimen/dp_18"
+            android:background="@drawable/news_book"
+            android:button="@null" />
+
+        <ImageView
+            android:id="@+id/news_iv_share"
+            android:layout_width="@dimen/dp_17"
+            android:layout_height="@dimen/dp_17"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:src="@mipmap/common_icon_collect_n_hdpi" />
+    </LinearLayout>
+y
+</RelativeLayout>

@@ -67,7 +67,9 @@
         <activity android:name=".page.messagepage.activity.AddAllActivity" />
         <activity android:name=".page.informationpage.activity.ClassfiyActivity" />
         <activity android:name=".page.informationpage.activity.NewsAdvisoryDetailsActivity" />
-        <activity android:name=".page.informationpage.activity.NewsAdvisorySearchActivity"></activity>
+        <activity android:name=".page.informationpage.activity.NewsAdvisorySearchActivity" />
+        <activity android:name=".page.informationpage.activity.NewsAdvisorySearchTwoActivity" />
+        <activity android:name=".page.informationpage.activity.WayActivity"></activity>
     </application>
 
 </manifest>

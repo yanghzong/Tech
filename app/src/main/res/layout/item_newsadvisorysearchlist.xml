@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title_tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:padding="@dimen/dp_10"
+        android:text="迅雷错过了区块链"
+        android:textSize="@dimen/sp_18" />
+
+    <TextView
+        android:id="@+id/title_tv_source"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/title_tv_name"
+        android:padding="@dimen/dp_10"
+        android:layout_height="wrap_content"
+        android:text="八维日报" />
+
+    <TextView
+        android:id="@+id/title_tv_time"
+        android:layout_toRightOf="@id/title_tv_source"
+        android:padding="@dimen/dp_10"
+        android:text="2018-10-16 21:14"
+        android:layout_alignTop="@id/title_tv_source"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

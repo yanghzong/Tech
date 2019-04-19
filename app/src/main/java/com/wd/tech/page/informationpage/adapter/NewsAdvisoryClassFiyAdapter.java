@@ -31,9 +31,18 @@ public class NewsAdvisoryClassFiyAdapter extends RecyclerView.Adapter<NewsAdviso
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.sdvSortIcon.setImageURI(list.get(i).getPic());
         viewHolder.tvSortName.setText(list.get(i).getName());
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int id = list.get(i).getId();
+                if (commodityClickListener!=null){
+                    commodityClickListener.onCommodityClick(id);
+                }
+            }
+        });
 
     }
 
@@ -52,5 +61,14 @@ public class NewsAdvisoryClassFiyAdapter extends RecyclerView.Adapter<NewsAdviso
             sdvSortIcon = itemView.findViewById(R.id.sort_sdv_icon);
             tvSortName = itemView.findViewById(R.id.sort_tv_name);
         }
+    }
+    public interface OnCommodityClickListener {
+        void onCommodityClick(int id);
+    }
+
+    private OnCommodityClickListener commodityClickListener;
+
+    public void setOnProductClickListener(OnCommodityClickListener listener) {
+        this.commodityClickListener = listener;
     }
 }
